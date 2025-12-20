@@ -104,72 +104,8 @@ header{
   font-size:14px;
   cursor:pointer;
   color:#fff;
+  text-decoration:none;
 }
-
-/* ================= SHOP ================= */
-.shop{
-  padding:140px 80px;
-}
-
-.products{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(360px,1fr));
-  gap:60px;
-}
-
-.card{
-  border-radius:34px;
-  padding:30px;
-  background:linear-gradient(145deg,rgba(255,255,255,0.12),rgba(255,255,255,0.02));
-  backdrop-filter:blur(30px);
-  border:1px solid rgba(255,255,255,0.18);
-  transition:.4s ease;
-}
-
-.card:hover{ transform:translateY(-10px); }
-
-.image-wrap{
-  position:relative;
-  border-radius:26px;
-  overflow:hidden;
-  margin-bottom:28px;
-}
-
-.image-wrap img{
-  width:100%;
-  transition:opacity .5s ease;
-}
-
-.image-wrap .front{
-  position:absolute;
-  inset:0;
-  opacity:0;
-}
-
-.image-wrap:hover .front{ opacity:1; }
-.image-wrap:hover .back{ opacity:0; }
-
-.card h3{
-  letter-spacing:2px;
-  margin-bottom:6px;
-}
-
-.card p{
-  opacity:.7;
-  margin-bottom:22px;
-}
-
-.card button{
-  width:100%;
-  padding:18px;
-  border-radius:999px;
-  border:none;
-  font-weight:bold;
-  cursor:pointer;
-}
-
-.add-purple{ background:#7b4cff; color:#fff; }
-.add-red{ background:#c61d1d; color:#fff; }
 
 /* ================= NEWSLETTER ================= */
 .newsletter{
@@ -222,10 +158,6 @@ header{
   letter-spacing:2px;
   color:#fff;
   cursor:pointer;
-}
-
-.newsletter button:hover{
-  background:rgba(255,255,255,0.25);
 }
 
 /* ================= FOOTER ================= */
@@ -341,36 +273,8 @@ footer{
     <source src="video.mp4" type="video/mp4">
   </video>
 
-  <button class="shop-btn" onclick="location.href='shop library.html'">
-  SHOP
-  </button>
-</section>
-
-<!-- ================= SHOP ================= -->
-<section class="shop" id="shop">
-  <div class="products">
-
-    <div class="card">
-      <div class="image-wrap">
-        <img src="BACK 1.png" class="back">
-        <img src="FRONT 1.png" class="front">
-      </div>
-      <h3>blood noir™</h3>
-      <p>₹1,800</p>
-      <button class="add-purple">Add to Cart</button>
-    </div>
-
-    <div class="card">
-      <div class="image-wrap">
-        <img src="BACK 2.png" class="back">
-        <img src="FRONT 3.png" class="front">
-      </div>
-      <h3>blood noir™</h3>
-      <p>₹1,800</p>
-      <button class="add-red">Add to Cart</button>
-    </div>
-
-  </div>
+  <!-- SHOP now redirects to Library.html -->
+  <a href="Library.html" class="shop-btn">SHOP</a>
 </section>
 
 <!-- ================= NEWSLETTER ================= -->
@@ -386,7 +290,6 @@ footer{
 <!-- ================= FOOTER ================= -->
 <footer>
   <div class="footer-grid">
-
     <div class="footer-col">
       <h4>VALENCIRÉ®</h4>
       <a href="#">About</a>
@@ -396,8 +299,8 @@ footer{
 
     <div class="footer-col">
       <h4>SHOP</h4>
-      <a href="#">Compression</a>
-      <a href="#">Oversized</a>
+      <a href="Library.html">Compression</a>
+      <a href="Library.html">Oversized</a>
       <a href="#">Limited Drops</a>
     </div>
 
@@ -411,10 +314,9 @@ footer{
     <div class="footer-col">
       <h4>FOLLOW</h4>
       <a href="#">Instagram</a>
-      <a href="#">X (Twitter)</a>
+      <a href="#">X</a>
       <a href="#">YouTube</a>
     </div>
-
   </div>
 
   <div class="footer-bottom">
@@ -426,8 +328,8 @@ footer{
 <div class="menu-panel" id="menuPanel">
   <span class="close-btn" onclick="closeMenu()">✕</span>
   <h2>MENU</h2>
-  <div class="menu-item">Compression T-Shirts</div>
-  <div class="menu-item">Oversized T-Shirts</div>
+  <div class="menu-item" onclick="location.href='Library.html'">Compression T-Shirts</div>
+  <div class="menu-item" onclick="location.href='Library.html'">Oversized T-Shirts</div>
 </div>
 
 <script>
