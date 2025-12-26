@@ -757,6 +757,144 @@ button,
 .cart-count {
   border-radius: 999px !important;
 }
+/* ================= LIQUID GLASS EFFECT ================= */
+
+/* Main product content box */
+.hero-text {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 28px;
+  padding: 48px;
+  box-shadow:
+    0 40px 80px rgba(0, 0, 0, 0.7),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+/* Product image cards */
+.product-image-card {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 26px;
+  box-shadow:
+    0 30px 60px rgba(0, 0, 0, 0.8),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Product selector pills (Blood Noir / Phantom Pro tabs) */
+.product-pill {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+/* Active pill glow */
+.product-pill.active {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+/* ================= SINGLE IMAGE HOVER SWAP ================= */
+
+.product-images.single {
+  display: flex;
+  justify-content: center;
+}
+
+.image-hover-card {
+  position: relative;
+  width: 360px;
+  aspect-ratio: 3 / 4;
+  border-radius: 28px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(22px) saturate(160%);
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 40px 80px rgba(0,0,0,0.8);
+  cursor: pointer;
+}
+
+/* Images */
+.image-hover-card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: opacity .6s ease, transform .6s ease;
+}
+
+/* Default: show back */
+.img-back {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Hidden front */
+.img-front {
+  opacity: 0;
+  transform: scale(1.05);
+}
+
+/* Hover swap */
+.image-hover-card:hover .img-back {
+  opacity: 0;
+  transform: scale(1.08);
+}
+
+.image-hover-card:hover .img-front {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Label */
+.image-hover-card .image-label {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 8px 18px;
+  font-size: 10px;
+  letter-spacing: 2px;
+  background: rgba(0,0,0,0.6);
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.2);
+  backdrop-filter: blur(10px);
+}
+/* ================= MATCH RIGHT BOX SIZE ================= */
+
+.product-images {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Make image card match hero-text width & height */
+.image-hover-card {
+  width: 100%;
+  max-width: 600px; /* matches left box visually */
+  height: 100%;
+  aspect-ratio: 3 / 4;
+}
+
+/* Ensure both columns feel equal */
+.hero-content-wrapper {
+  align-items: stretch;
+}
+
+/* Stretch image area to match left */
+.product-images {
+  height: 100%;
+}
+
+
 
 </style>
 </head>
@@ -823,17 +961,9 @@ button,
       </div>
     </div>
     
-    <div class="product-images" id="productImages">
-      <div class="product-image-card">
-        <img src="FRONT 1.png" alt="Front View">
-        <div class="image-label">FRONT VIEW</div>
-      </div>
-      <div class="product-image-card">
-        <img src="BACK 1.png" alt="Back View">
-        <div class="image-label">BACK VIEW</div>
-      </div>
-    </div>
-  </div>
+    <div class="product-images single" id="productImages"></div>
+
+
 </section>
 
 <!-- ================= FEATURES ================= -->
@@ -1037,17 +1167,16 @@ function loadProduct(index) {
   document.getElementById('productPrice').textContent = `₹${product.price.toLocaleString()}`;
   
   // Update images
-  const imagesHtml = `
-    <div class="product-image-card">
-      <img src="${product.images.front}" alt="${product.name} Front">
-      <div class="image-label">FRONT VIEW</div>
-    </div>
-    <div class="product-image-card">
-      <img src="${product.images.back}" alt="${product.name} Back">
-      <div class="image-label">BACK VIEW</div>
-    </div>
-  `;
-  document.getElementById('productImages').innerHTML = imagesHtml;
+const imagesHtml = `
+  <div class="image-hover-card">
+    <img class="img-back" src="${product.images.back}" alt="Back View">
+    <img class="img-front" src="${product.images.front}" alt="Front View">
+    <div class="image-label">HOVER TO VIEW FRONT</div>
+  </div>
+`;
+document.getElementById('productImages').innerHTML = imagesHtml;
+
+
   
   // Update features
   const featuresHtml = product.features.map(feature => `
