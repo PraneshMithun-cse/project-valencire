@@ -1322,6 +1322,7 @@ function updatePrice() {
 // Cart Functions
 function addToCart() {
   const product = products[currentProductIndex];
+
   const item = {
     id: product.id,
     name: product.name,
@@ -1330,17 +1331,20 @@ function addToCart() {
     quantity: quantity,
     image: product.images.front
   };
-  
-  const existingIndex = cart.findIndex(i => i.id === item.id && i.size === item.size);
+
+  const existingIndex = cart.findIndex(
+    i => i.id === item.id && i.size === item.size
+  );
+
   if (existingIndex >= 0) {
     cart[existingIndex].quantity += quantity;
   } else {
     cart.push(item);
   }
-  
-  saveCart();
+
+  saveCart();          // 🔥 THIS NOW REALLY SAVES
   updateCartCount();
-  showNotification(`Added ${quantity}x ${product.name} (Size ${selectedSize}) to cart`);
+  showNotification(`Added ${quantity}x ${product.name} (Size ${selectedSize})`);
 }
 
 function buyNow() {
@@ -1367,17 +1371,15 @@ function updateCartCount() {
 }
 
 function saveCart() {
-  const data = JSON.stringify(cart);
-  try {
-    cart = JSON.parse(data);
-  } catch(e) {
-    console.log('Cart updated');
-  }
+  localStorage.setItem("valencire_cart", JSON.stringify(cart));
 }
 
+
 function loadCart() {
+  cart = JSON.parse(localStorage.getItem("valencire_cart")) || [];
   updateCartCount();
 }
+
 
 // Notification
 function showNotification(message) {
