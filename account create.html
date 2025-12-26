@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Create Account | VALENCIRÉ®</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  min-height:100vh;
+  background:#0a0a0a;
+  color:#f5f5f5;
+  font-family:"Helvetica Neue","Futura",Arial,sans-serif;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.create-wrap {
+  width:100%;
+  max-width:460px;
+  padding:52px 42px;
+  border-radius:28px;
+  background: radial-gradient(
+    ellipse at top,
+    rgba(255,255,255,0.06),
+    rgba(0,0,0,0.95)
+  );
+  border:1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(30px);
+}
+
+.logo {
+  text-align:center;
+  margin-bottom:36px;
+}
+
+.logo img {
+  height:90px;
+}
+
+h1 {
+  text-align:center;
+  font-size:20px;
+  letter-spacing:4px;
+  margin-bottom:32px;
+  font-weight:400;
+}
+
+.form-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+}
+
+.full {
+  grid-column:1 / -1;
+}
+
+input {
+  width:100%;
+  padding:16px 20px;
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.18);
+  border-radius:999px;
+  color:#fff;
+  font-size:14px;
+  outline:none;
+  transition:.3s ease;
+}
+
+input::placeholder {
+  color:rgba(245,245,245,0.45);
+  letter-spacing:1px;
+}
+
+input:focus {
+  border-color:rgba(255,255,255,0.5);
+  background:rgba(255,255,255,0.1);
+}
+
+.create-btn {
+  width:100%;
+  margin-top:26px;
+  padding:16px;
+  border-radius:999px;
+  border:none;
+  background:#7f5cff;
+  color:#fff;
+  font-weight:600;
+  letter-spacing:2px;
+  cursor:pointer;
+  transition:.3s ease;
+}
+
+.create-btn:hover {
+  transform:translateY(-2px);
+  box-shadow:0 14px 36px rgba(127,92,255,.45);
+}
+
+.terms {
+  margin-top:18px;
+  font-size:11px;
+  letter-spacing:1px;
+  opacity:.6;
+  text-align:center;
+  line-height:1.6;
+}
+
+.terms a {
+  color:#f5f5f5;
+  text-decoration:none;
+  opacity:.8;
+}
+
+.terms a:hover {
+  opacity:1;
+}
+
+.login-link {
+  margin-top:22px;
+  text-align:center;
+  font-size:12px;
+  letter-spacing:1px;
+  opacity:.75;
+}
+
+.login-link a {
+  color:#f5f5f5;
+  text-decoration:none;
+}
+
+.login-link a:hover {
+  opacity:1;
+}
+
+@media(max-width:520px){
+  .form-grid {
+    grid-template-columns:1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="create-wrap">
+  <div class="logo">
+    <img src="LOGO BRO.png" alt="VALENCIRÉ">
+  </div>
+
+  <h1>CREATE ACCOUNT</h1>
+
+  <form onsubmit="createAccount(event)">
+    <div class="form-grid">
+      <input type="text" placeholder="First Name" required>
+      <input type="text" placeholder="Last Name" required>
+      <input type="email" placeholder="Email Address" class="full" required>
+      <input type="password" placeholder="Password" required>
+      <input type="password" placeholder="Confirm Password" required>
+    </div>
+
+    <button class="create-btn" type="submit">
+      CREATE ACCOUNT
+    </button>
+  </form>
+
+  <div class="terms">
+    By creating an account, you agree to our  
+    <a href="#">Terms</a> & <a href="#">Privacy Policy</a>.
+  </div>
+
+  <div class="login-link">
+    Already have an account? <a href="account.html">Sign In</a>
+  </div>
+</div>
+
+<script>
+function createAccount(e){
+  e.preventDefault();
+  // demo flow
+  window.location.href = "address.html";
+}
+</script>
+
+</body>
+</html>
