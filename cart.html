@@ -732,6 +732,12 @@ async function checkout() {
 
 // Initialize cart on page load
 window.onload = renderCart;
+
+const session = localStorage.getItem("valencire_session");
+
+if (!session) {
+  window.location.href = "/account.html";
+}
 </script>
 
 </body>
