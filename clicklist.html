@@ -1170,7 +1170,11 @@ const products = [
     name: "BLOOD NOIR™",
     category: "Compression",
     price: 1800,
-    images: { front: "FRONT 1.png", back: "BACK 1.png" },
+    images: {
+  front: "../assets/images/FRONT 1.png",
+  back: "../assets/images/BACK 1.png"
+}
+,
     description: "Engineered compression fit meets uncompromising luxury. Advanced moisture-wicking technology with a tailored silhouette designed for those who demand excellence.",
     features: [
       { icon: "layers", title: "4-Way Stretch", desc: "Advanced compression fabric engineered for unrestricted movement and superior muscle support." },
@@ -1226,7 +1230,11 @@ const products = [
     name: "SHADOW ELITE™",
     category: "Oversized",
     price: 2100,
-    images: { front: "FRONT 1.png", back: "BACK 1.png" },
+    images: {
+  front: "../assets/images/FRONT 1.png",
+  back: "../assets/images/BACK 1.png"
+}
+,
     description: "Oversized luxury fit with premium cotton blend. Experience the perfect balance of comfort and style with our signature relaxed silhouette.",
     features: [
       { icon: "maximize", title: "Oversized Fit", desc: "Contemporary relaxed cut for ultimate comfort and modern styling." },
@@ -1473,6 +1481,7 @@ function buyNow() {
   addToCart();
   setTimeout(() => {
     showNotification('Proceeding to checkout...');
+    
   }, 500);
 }
 

@@ -450,7 +450,7 @@
         </div>
 
         <div class="logo">
-            <img src="LOGO BRO.png" alt="VALENCIRÈ" onerror="this.style.display='none'">
+            <img src="assets/images/LOGO BRO.png" alt="VALENCIRÈ" onerror="this.style.display='none'">
         </div>
 
         <div class="header-right">
@@ -481,7 +481,7 @@
     <!-- HERO -->
     <section class="hero">
         <video autoplay muted loop playsinline>
-            <source src="video.mp4" type="video/mp4">
+            <source src="assets/videos/video.mp4" type="video/mp4">
         </video>
     </section>
 
@@ -1185,24 +1185,36 @@
                 name: "AMETHYST NOIR™",
                 price: 1800,
                 category: "compression",
-                images: { back: "BACK 1.png", front: "FRONT 1.png" },
-                theme: "purple"
+                theme: "white",
+                images: {
+                back: "assets/images/BACK 1.png",
+                front: "assets/images/FRONT 1.png"
+            },
+
+                
             },
             {
                 id: 2,
                 name: "BLOOD NOIR™",
                 price: 1800,
                 category: "compression",
-                theme: "red",
-                images: { back: "BACK 2.png", front: "FRONT 3.png" }
+                theme: "white",
+                images: {
+                    back: "assets/images/BACK 2.png",
+                    front: "assets/images/FRONT 2.png"
+                }
+
             },
             {
                 id: 3,
                 name: "PHANTOM PRO™",
                 price: 1950,
                 category: "compression",
-                theme: "blue",
-                images: { back: "valencire blue back .png", front: "valencire blue final out .png" }
+                theme: "white",
+                images: {
+                    back: "assets/images/valencire blue back .png",
+                    front: "assets/images/valencire blue final out .png"
+                }
             }
         ];
 
@@ -1339,7 +1351,7 @@
                 .replace(/\s+/g, '-')
                 .replace(/[^a-z0-9-]/g, '');
 
-            window.location.href = `product.html?product=${slug}`;
+            window.location.href = `pages/product.html?product=${slug}`;
         }
 
         function addToCart(productId) {
@@ -1379,7 +1391,7 @@
             const n = document.getElementById('notification');
             n.textContent = msg;
             n.classList.add('show');
-            setTimeout(() => n.classList.remove('show'), 3000);
+            setTimeout(() => n.classList.remove('show'), 3000); 
         }
 
         function subscribe(e) {
@@ -1394,6 +1406,10 @@
                 document.getElementById('auth-modal').classList.remove('active');
             }
         });
+        function isLoggedIn() {
+  return !!localStorage.getItem('valencire_session');
+}
+
     </script>
 
 </body>
